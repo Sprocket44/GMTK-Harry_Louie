@@ -5,9 +5,14 @@ using UnityEngine.AI;
 
 public class Enemy2Behaviour : MonoBehaviour
 {
+    public int health; 
+
     public GameObject player;
     public float dist;
     public NavMeshAgent agent;
+
+    public Transform fireballSpawn; 
+    public GameObject fireball; 
 
     public float stopDistance = 5;
 
@@ -17,7 +22,8 @@ public class Enemy2Behaviour : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        anim = this.GetComponentInChildren<Animator>(); 
+        anim = this.GetComponentInChildren<Animator>();
+        health = 20; 
     }
 
     // Update is called once per frame
@@ -36,15 +42,25 @@ public class Enemy2Behaviour : MonoBehaviour
         }
 
         //Decide whether to shoot 
-        int brain = Random.Range(0, 100);
+        int brain = Random.Range(0, 201);
 
-        if(brain > 70)
+        if(brain > 199)
         {
             anim.SetBool("Attack", true);
+
         }
         else
         {
             anim.SetBool("Attack", false);
         }
     }
+    public void takeDamage(int damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 }

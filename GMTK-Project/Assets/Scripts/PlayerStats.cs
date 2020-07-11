@@ -24,4 +24,9 @@ public class PlayerStats : MonoBehaviour
     {
         camera.GetComponent<Camera>().fieldOfView = playerHealth; 
     }
+
+    public void takeDamage(int damage)
+    {
+        playerHealth -= damage; 
+    }
 }
