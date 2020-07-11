@@ -38,6 +38,11 @@ public class CameraControl : MonoBehaviour
         MoveCamera();
     }
 
+    void fixedUpdate()
+    {
+        //MoveCamera();
+    }
+
     void HandleInput()
     {
         mouseX = Input.GetAxisRaw("Mouse X");

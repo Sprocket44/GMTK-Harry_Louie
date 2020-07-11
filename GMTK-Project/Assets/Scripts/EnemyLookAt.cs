@@ -2,22 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pistol : MonoBehaviour
+public class EnemyLookAt : MonoBehaviour
 {
-    public Transform bulletSpawn; 
+
+    public GameObject target; 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        target = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            //Raycast for enemies 
-        }
+        this.transform.LookAt(target.transform);
     }
 }
